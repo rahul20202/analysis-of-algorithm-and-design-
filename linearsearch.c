@@ -1,24 +1,27 @@
 #include<stdio.h>
-#define MAX 100
+#include<stdlib.h>
+#include<time.h>
+#define MAX 200
 
 int main(){
-	int a[MAX],i,x,n,temp;
-	printf("enter the size of array\n");
-	scanf("%d",&n);
-	printf("enter the elements:");
-	for(i=0;i<n;i++){
-		scanf("%d",&a[i]);
+	int a[MAX],i,x,temp;
+	clock_t t1,t2;
+	t1=clock();
+	for(i=0;i<MAX;i++){
+		a[i]=rand();
 	}
-	printf("enter the element to be searched in the list");
+	printf("enter the element to be searched:");
 	scanf("%d",&x);
 	//beginning of the linear search
-	for(i=0;i<n;i++)
+	for(i=0;i<MAX;i++)
 	{
 		if(a[i]==x){
 			temp=i;//stores the value 
-		return printf("found:%d",temp);
+		 printf("found:%d",temp);
 		}
 	}
-	
+	t2=clock();
+	float t=(t2-t1)/CLOCKS_PER_SEC;
+	printf("time taken is:%f",t);
 	return 0;
 }
