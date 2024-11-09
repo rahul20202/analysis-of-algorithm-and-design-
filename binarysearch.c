@@ -1,17 +1,14 @@
 #include <stdio.h>
-#define MAX 100
-
+#include <stdlib.h>
+#include <time.h>
+#define MAX 1000
 int main() {
-    int a[MAX], low = 0, high, mid, x, n, i;
-
-    printf("Enter the size of array: ");
-    scanf("%d", &n);
-
-    high = n - 1;  // Initialize high after reading n
-
-    printf("Enter the elements in sorted order: ");
-    for (i = 0; i < n; i++) {
-        scanf("%d", &a[i]);
+    int a[MAX], low = 0, high, mid, x, i;
+    clock_t t1,t2;
+    t1=clock();
+    high = MAX - 1;  // Initialize high after reading n
+    for (i = 0; i < MAX; i++) {
+        a[i]=rand();
     }
 
     printf("Enter the element to be searched in the list: ");
@@ -31,9 +28,8 @@ int main() {
         else             // If x is smaller, ignore the right half
             high = mid - 1;
     }
-
-    // If element is not found
-    printf("Element not found\n");
+    t2=clock();
+    float t=(t2-t1)/CLOCKS_PER_SEC;
+    printf("time taken is:%f",t);
     return 0;
 }
-
